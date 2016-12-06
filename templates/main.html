@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>New Post</title>
+    <link rel= "stylesheet" type="text/css" href="/css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h1 id="title">Jason Boyer's Blog App</h1>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a> /
+        <a href="/register"> Register</a>
+    {% endif %}
+<h2>Recent Posts</h2>
+<h3><a href="/newpost">Create new post</a></h3>
+{% endblock %}
+
+{% block content %}
+    <div id="error">{{error}}</div>
+    {% for article in articles %}
+        {% if article.parent_post == 0: %}
+            <div class = "article-style">
+                <div class="article-title"><a href="/postcomment/{{article.key().id()}}">{{article.title}}</a></div>
+                <div class="article-date">{{article.created.date().strftime('%A, %B %d, %Y')}}</div>
+                <div class="article-author">Author: {{article.author}}</div>
+                <div class="likes">Likes: {{article.like_count}} <a href="/like/{{article.key().id()}}">Like</a> / <a href="/unlike/{{article.key().id()}}">Unlike</a></div>
+                <div class="comment"><a href="/comment/{{article.key().id()}}">Comment</a></div>
+                <hr>
+                <div class="article">
+                    <pre class="article-body">{{article.article}}</pre>
+                    <a href="/editpost/{{article.key().id()}}">Edit</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

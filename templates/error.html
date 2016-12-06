@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>ERROR!</title>
+    <link rel= "stylesheet" type="text/css" href="/css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h1 id="title">ERROR PAGE!!!</h1>
+{% endblock %}
+
+{% block content %}
+    <div id="error">{{error}}</div>
+    <div>
+        <a href="/">Return to front page</a>
+    </div>
+{% endblock %}

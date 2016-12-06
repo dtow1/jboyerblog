@@ -1,0 +1,59 @@
+html,
+body {
+    background-image: url("../images/background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+a:link,
+a:visited {
+    font-weight: bolder;
+    color: white;
+}
+#error {
+    font-size: 2em;
+    color: red;
+    font-weight: bolder;
+}
+
+.body {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(31,31,20,.7);
+    color: white;
+    min-width: 100vh;
+    min-height: 100vh;
+}
+
+.article-style {
+    width: 90%;
+    margin: 0 auto;
+}
+.article-title {
+    font-size: 1.5em;
+    font-weight: bolder;
+    width: 49%;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.article-date {
+    width: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+.article-author {
+    width: 100%;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.article {
+    margin-bottom: 100px;
+}

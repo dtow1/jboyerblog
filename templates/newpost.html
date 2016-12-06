@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Welcome!</title>
+    <link rel= "stylesheet" type="text/css" href="css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h1 id="title">Jason Boyer's Blog App Front Page</h1>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label>
+            <div>Title</div>
+            <input type="text" name="subject" value = "{{title}}" size="
+            60" maxlength="60">
+        </label>
+
+        <label>
+            <div>Article</div>
+            <textarea name="content" rows="4" cols="100">{{article}}</textarea>
+        </label>
+        <div class="error">{{error}}</div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href = "/canceledit">Cancel</a>
+
+
+    <hr>
+
+    {% for article in articles %}
+        {% if article.parent_post == 0: %}
+            <div class = "article-style">
+                <div class="article-title">{{article.title}}</div>
+                <div class="article-date">{{article.created.date().strftime('%A, %B %d, %Y')}}</div>
+                <div class="article-author">Author: {{article.author}}</div>
+                <hr>
+                <pre class="article-body">{{article.article}}</pre>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

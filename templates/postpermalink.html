@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Your Latest Post</title>
+    <link rel= "stylesheet" type="text/css" href="../css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+    <h1 id="title">Jason Boyer's Blog App</h1>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a>
+    {% endif %}
+    <a href="/">Home</a>
+{% endblock %}
+
+{% block content %}
+    <div class = "article-style">
+        <div class="article-title">{{title}}</div>
+        <div class="article-date">{{date}}</div>
+        <div class="article-author">Author: {{author}}</div>
+        <hr>
+        <pre class="article-body">{{article}}</pre>
+    </div>
+{% endblock %}

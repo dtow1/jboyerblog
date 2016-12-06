@@ -1,0 +1,42 @@
+# Project Name
+
+Jasons Blog App
+## Installation
+
+This is a webapp. It can be accessed at http://jboyersignuppage.appspot.com/. It is a Google App Engine(GAE) application so it has to be deployed to GAE. To test locally, Import it as a project into the GoogleAppEngineLauncher using the GAE documentation.
+
+## Usage
+
+It can be accessed at http://jboyersignuppage.appspot.com/.
+
+###NEW POST
+To add a new post click: Create new post
+You must include a title and article body text.
+You must be signed in to create a post
+
+
+###EDIT POST
+To edit a post select Edit
+You must be logged in to edit a post.
+You can only edit posts that you wrote.
+
+
+###LIKE/UNLIKE
+To like a post click : Like
+To unlike a post click: Unlike
+You can only like or unlike a post that someone else created.
+
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+
+## Credits
+
+Author: Jason Boyer
+Date: 8/22/2016

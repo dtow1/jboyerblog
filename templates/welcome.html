@@ -1,0 +1,13 @@
+{% extends "regbase.html" %}
+{% block content %}
+    <h1>Welcome, {{username}}!</h1>
+    <tr>
+        <td><a href="/">Front Page</a></td>
+    </tr>
+    <tr>
+        <td><a href="/logout">Sign out</a></td>
+    </tr>
+        <tr>
+        <td><a href="/newpost">New Post</a></td>
+    </tr>
+{% endblock %}

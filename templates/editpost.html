@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Editing Post</title>
+    <link rel= "stylesheet" type="text/css" href="/css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h1 id="title">Editing Post: {{title}}</h1>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label>
+            <div>{{title}}</div>
+        </label>
+
+        <label>
+            <div>Article</div>
+            <textarea name="content" rows="4" cols="100">{{article}}</textarea>
+        </label>
+        <div class="error">{{error}}</div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href = "/canceledit">Cancel</a>
+
+
+    <hr>
+{% endblock %}

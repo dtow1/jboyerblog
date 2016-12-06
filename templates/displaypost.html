@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Comment</title>
+    <link rel= "stylesheet" type="text/css" href="/css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h3 id="home"><a href="/">Main Page</a></h3>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a> /
+        <a href="/register"> Register</a>
+    {% endif %}
+<h1 id="title">Commenting on Post: {{title}}</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class = "article-style">
+        <div class="article-title">Main article: {{article.title}}</div>
+        <div class="article-date">{{article.created.date().strftime('%A, %B %d, %Y')}}</div>
+        <div class="article-author">Author: {{article.author}}</div>
+        <div class="likes">Likes: {{article.like_count}} <a href="/like/{{article.key().id()}}">Like</a> / <a href="/unlike/{{article.key().id()}}">Unlike</a></div>
+        <hr>
+        <pre class="article-body">{{article.article}}</pre>
+        <div class="comment"><a href="/comment/{{article.key().id()}}">Comment</a></div>
+        <div>
+            <a href="/editpost/{{article.key().id()}}">Edit</a>
+        </div>
+        <div>
+            <a href="/deletepost/{{article.key().id()}}">Delete</a>
+        </div>
+    </div>
+
+    <hr>
+    <br>
+    <hr>
+    {% for article in articles %}
+        {% if "" ~ article.parent_post == "" ~ rootID: %}
+        <div class = "article-style">
+            <div class="article-title">{{article.title}}</div>
+            <div class="article-date">{{article.created.date().strftime('%A, %B %d, %Y')}}</div>
+            <div class="article-author">Author: {{article.author}}</div>
+            <div class="likes">Likes: {{article.like_count}} <a href="/like/{{article.key().id()}}">Like</a> / <a href="/unlike/{{article.key().id()}}">Unlike</a></div>
+            <hr>
+            <pre class="article-body">{{article.article}}</pre>
+            <a href="/editpost/{{article.key().id()}}">Edit</a>
+            <div>
+                <a href="/deletepost/{{article.key().id()}}">Delete</a>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

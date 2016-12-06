@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Comment</title>
+    <link rel= "stylesheet" type="text/css" href="/css/style.css">
+{% endblock %}
+
+{% block headingmessage %}
+<h1 id="title">Commenting on Post: {{title}}</h1>
+    {% if username and username != "": %}
+        Logged in as: {{username}}
+        <a href="/logout">Sign out</a>
+    {% else %}
+        Not logged in.
+        <a href="/login">Sign in</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class = "article-style">
+        <div class="article-title">{{mainarticle.title}}</div>
+        <div class="article-date">{{mainarticle.created.date().strftime('%A, %B %d, %Y')}}</div>
+        <div class="article-author">Author: {{mainarticle.author}}</div>
+        <hr>
+        <pre class="article-body">{{mainarticle.article}}</pre>
+    </div>
+
+    <form method="post">
+        <label>
+            <div>Title</div>
+            <input type="text" name="subject" value = "{{title}}" size="
+            60" maxlength="60">
+        </label>
+
+        <label>
+            <div>Article</div>
+            <textarea name="content" rows="4" cols="100">{{article}}</textarea>
+        </label>
+        <input type="hidden" name="parentid" value="{{mainarticle.key().id()}}">
+        <div class="error">{{error}}</div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/canceledit">Cancel It</a>
+
+
+    <hr>
+    <br>
+    <hr>
+    {% for article in articles %}
+        {% if article.parent_post == mainarticle.key().id(): %}
+        <div class = "article-style">
+            <div class="article-title">{{article.title}}</div>
+            <div class="article-date">{{article.created.date().strftime('%A, %B %d, %Y')}}</div>
+            <div class="article-author">Author: {{article.author}}</div>
+            <hr>
+            <pre class="article-body">{{article.article}}</pre>
+            <a href="/editpost/{{article.key().id()}}">Edit</a>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
